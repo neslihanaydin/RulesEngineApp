@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Supplement Calculation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <h1>Supplement Calculation</h1>
+
+        <!-- Supplement Type Selection -->
+        <div class="supplement-selection">
+            <label for="supplementType">Choose Supplement Type:</label>
+            <select id="supplementType" required>
+                <option value="winter" selected>Winter</option>
+                <option value="summer">Summer</option>
+            </select>
+        </div>
+        
+        <!-- Form based on Supplement Type -->
+        <form id="supplementForm">
+            <!-- Winter Form Fields -->
+            <div id="winterFormFields" class="form-fields">
+                <label for="winterNumberOfChildren">Number of Children:</label>
+                <input type="number" id="winterNumberOfChildren">
+
+                <label for="winterFamilyComposition">Family Composition:</label>
+                <div class="family-composition">
+                    <select id="winterFamilyComposition">
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                    </select>
+                </div>
+
+                <label for="winterFamilyUnitInPayForDecember">Eligible for Family Support in December:</label>
+                <input type="checkbox" id="winterFamilyUnitInPayForDecember">
+            </div>
+
+            <!-- Summer Form Fields -->
+            <div id="summerFormFields" class="form-fields" style="display:none;">
+                <label for="summerNumberOfChildren">Number of Children:</label>
+                <input type="number" id="summerNumberOfChildren">
+
+                <label for="summerFamilyComposition">Family Composition:</label>
+                <div class="family-composition">
+                    <select id="summerFamilyComposition">
+                        <option value="single">Single</option>
+                        <option value="married">Married</option>
+                    </select>
+                </div>
+
+                <label for="summerHouseholdIncome">Household Income:</label>
+                <input type="number" id="summerHouseholdIncome">
+
+                <label for="summerFamilyUnitInPayForJuly">Eligible for Family Support in July:</label>
+                <input type="checkbox" id="summerFamilyUnitInPayForJuly">
+            </div>
+
+            <button type="submit">Calculate</button>
+        </form>
+
+        <!-- Supplement Result -->
+        <div id="resultTable" class="result-table" style="display:none;">
+            <h2>Supplement Calculation Breakdown</h2>
+            <table>
+                <tr>
+                    <th>Base Amount</th>
+                    <th>Children Amount</th>
+                    <th>Total Amount</th>
+                </tr>
+                <tr>
+                    <td id="baseAmount">$0.00</td>
+                    <td id="childrenAmount">$0.00</td>
+                    <td id="totalAmount">$0.00</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <script src="https://unpkg.com/mqtt/dist/mqtt.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>

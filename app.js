@@ -88,7 +88,7 @@ document.getElementById("supplementForm").addEventListener("submit", function (e
     const householdIncome = supplementType === "summer" ? document.getElementById("summerHouseholdIncome").value : null;
 
     const formData = {
-        id: "af3054e0-27ff-428e-9531-72b88106039c", //generateUniqueId(), //TODO , generate unique id for each form submission
+        id: "72b88106039c", //generateUniqueId(), //TODO , generate unique id for each form submission
         numberOfChildren: parseInt(numberOfChildren),
         familyComposition: familyComposition,
         familyUnitInPayForDecember: supplementType === "winter" ? familyUnitInPayForDecember : null,
@@ -103,8 +103,8 @@ document.getElementById("supplementForm").addEventListener("submit", function (e
             alert("Please fill out all fields.");
             return;
         }
-        inputTopic = `BRE/calculateWinterSupplementInput/${formData.id}`;
-        outputTopic = `BRE/calculateWinterSupplementOutput/${formData.id}`;
+        inputTopic = `RulesEngine/winterSupplementInput/${formData.id}`;
+        outputTopic = `RulesEngine/winterSupplementOutput/${formData.id}`;
         delete formData.householdIncome;
         delete formData.familyUnitInPayForJuly;
     } else if (supplementType === "summer") {
@@ -112,8 +112,8 @@ document.getElementById("supplementForm").addEventListener("submit", function (e
             alert("Please fill out all fields.");
             return;
         }
-        inputTopic = `BRE/calculateSummerSupplementInput/${formData.id}`;
-        outputTopic = `BRE/calculateSummerSupplementOutput/${formData.id}`;
+        inputTopic = `RulesEngine/summerSupplementInput/${formData.id}`;
+        outputTopic = `RulesEngine/summerSupplementOutput/${formData.id}`;
         delete formData.familyUnitInPayForDecember;
     }
 

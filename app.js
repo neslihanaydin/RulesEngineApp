@@ -88,7 +88,7 @@ document.getElementById("supplementForm").addEventListener("submit", function (e
     const householdIncome = supplementType === "summer" ? document.getElementById("summerHouseholdIncome").value : null;
 
     const formData = {
-        id: "72b88106039c", //generateUniqueId(), //TODO , generate unique id for each form submission
+        id: generateUniqueId(),
         numberOfChildren: parseInt(numberOfChildren),
         familyComposition: familyComposition,
         familyUnitInPayForDecember: supplementType === "winter" ? familyUnitInPayForDecember : null,
@@ -103,7 +103,7 @@ document.getElementById("supplementForm").addEventListener("submit", function (e
             alert("Please fill out all fields.");
             return;
         }
-        inputTopic = `RulesEngine/winterSupplementInput/${formData.id}`;
+        inputTopic = `RulesEngine/winterSupplementInput/`;
         outputTopic = `RulesEngine/winterSupplementOutput/${formData.id}`;
         delete formData.householdIncome;
         delete formData.familyUnitInPayForJuly;
@@ -112,7 +112,7 @@ document.getElementById("supplementForm").addEventListener("submit", function (e
             alert("Please fill out all fields.");
             return;
         }
-        inputTopic = `RulesEngine/summerSupplementInput/${formData.id}`;
+        inputTopic = `RulesEngine/summerSupplementInput/`;
         outputTopic = `RulesEngine/summerSupplementOutput/${formData.id}`;
         delete formData.familyUnitInPayForDecember;
     }
@@ -124,6 +124,7 @@ document.getElementById("supplementForm").addEventListener("submit", function (e
             if (err) {
                 console.error("Error publishing message: :", err);
             } else {
+                console.log("Input topic:", inputTopic);
                 console.log("Published message:", message);
             }
         });
